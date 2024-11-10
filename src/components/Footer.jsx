@@ -9,7 +9,7 @@ const Footer = () => (
           <p className="text-gray-400 mb-6">Instructional Designer & Learning Experience Developer</p>
           <div className="flex space-x-6 mb-6">
             <a 
-              href="https://linkedin.com/in/your-profile"
+              href="https://www.linkedin.com/in/shariq-khan-00ab91b4"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors"
@@ -18,14 +18,14 @@ const Footer = () => (
               <Linkedin size={24} />
             </a>
             <a 
-              href="mailto:contact@example.com"
+              href="mailto:shariqkhanns@gmail.com"
               className="text-gray-400 hover:text-white transition-colors"
               aria-label="Email Contact"
             >
               <Mail size={24} />
             </a>
             <a 
-              href="https://github.com/your-profile"
+              href="https://github.com/shariqkhan010"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors"

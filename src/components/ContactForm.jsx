@@ -63,7 +63,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
+                      className="block w-full pl-10 pr-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
                       placeholder="John Doe"
                     />
                   </div>
@@ -84,7 +84,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
+                      className="block w-full pl-10 pr-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -106,7 +106,7 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
+                    className="block w-full pl-10 pr-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
                     placeholder="Project Discussion"
                   />
                 </div>
@@ -123,7 +123,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows="6"
-                  className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
+                  className="block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
                   placeholder="Tell me about your project..."
                 />
               </div>
