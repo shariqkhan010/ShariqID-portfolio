@@ -4,9 +4,9 @@ import { Menu, X, Home, User, Briefcase, Star, Wrench, MessageSquare, FileText }
 
 const Navigation = ({ isOpen, setIsOpen }) => {
   const menuItems = [
-    { name: 'Home', icon: Home },
+    { name: 'Home', icon: Home},
     { name: 'About', icon: User },
-    { name: 'Portfolio', icon: Briefcase },
+    { name: 'Portfolio', icon: Briefcase, path: '/portfolio' },
     { name: 'Skills', icon: Star },
     { name: 'Tools', icon: Wrench },
     { name: 'Contact', icon: MessageSquare },
