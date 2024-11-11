@@ -15,15 +15,31 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setSubmitStatus('success');
-      setIsSubmitting(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      // Reset form status after 3 seconds
+
+    try {
+      const form = e.target;
+      const formData = new FormData(form);
+      
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setSubmitStatus(null), 3000);
+      } else {
+        setSubmitStatus('error');
+        setTimeout(() => setSubmitStatus(null), 3000);
+      }
+    } catch (error) {
+      setSubmitStatus('error');
       setTimeout(() => setSubmitStatus(null), 3000);
-    }, 1000);
+    }
+
+    setIsSubmitting(false);
   };
 
   const handleChange = (e) => {
@@ -46,7 +62,15 @@ const Contact = () => {
 
         <div className="max-w-3xl mx-auto">
           <div className="bg-white rounded-lg shadow-md p-6 md:p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              onSubmit={handleSubmit}
+              className="space-y-6"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -148,6 +172,12 @@ const Contact = () => {
               {submitStatus === 'success' && (
                 <div className="text-green-600 text-center py-2">
                   Thank you! Your message has been sent successfully.
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="text-red-600 text-center py-2">
+                  Oops! Something went wrong. Please try again later.
                 </div>
               )}
             </form>
