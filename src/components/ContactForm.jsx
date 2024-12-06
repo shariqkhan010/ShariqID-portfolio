@@ -16,7 +16,7 @@ const Contact = () => {
     return Object.keys(data)
       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
       .join("&");
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ const Contact = () => {
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ 
+        body: encode({
           "form-name": "contact",
           ...formData
         })
@@ -190,6 +190,30 @@ const Contact = () => {
           </div>
         </div>
       </div>
+
+      <style jsx global>{`
+        input:-webkit-autofill,
+        textarea:-webkit-autofill {
+          background-color: white !important;
+          color: black !important;
+        }
+
+        input:-webkit-autofill::first-line,
+        textarea:-webkit-autofill::first-line {
+          color: black !important;
+        }
+
+        input:-webkit-autofill::selection,
+        textarea:-webkit-autofill::selection {
+          background-color: transparent !important;
+          color: black !important;
+        }
+
+        input:-webkit-autofill {
+          -webkit-box-shadow: 0 0 0 30px white inset !important;
+          box-shadow: 0 0 0 30px white inset !important;
+        }
+      `}</style>
     </section>
   );
 };
