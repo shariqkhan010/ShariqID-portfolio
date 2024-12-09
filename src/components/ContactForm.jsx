@@ -1,67 +1,60 @@
-import React, { useState } from 'react';
-import { Mail, Send, User, MessageSquare } from 'lucide-react';
+import React, { useState } from "react";
+import { Mail, Send, User, MessageSquare } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  const encode = (data) => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     try {
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": "contact",
-          ...formData
-        })
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
-        setTimeout(() => setSubmitStatus(null), 3000);
-      } else {
-        setSubmitStatus('error');
-        setTimeout(() => setSubmitStatus(null), 3000);
-      }
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setSubmitStatus(null), 3000);
     } catch (error) {
-      setSubmitStatus('error');
+      setSubmitStatus("error");
       setTimeout(() => setSubmitStatus(null), 3000);
     }
-
     setIsSubmitting(false);
   };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   return (
     <section id="contact" className="py-16 bg-gray-50">
+      <style>
+        {`
+          input:-webkit-autofill,
+          textarea:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+            -webkit-text-fill-color: #000 !important;
+            background-color: white !important;
+          }
+          input,
+          textarea {
+            background-color: white;
+            color: #000;
+          }
+        `}
+      </style>
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Get In Touch</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Interested in working together? I'd love to hear about your project. 
+            Interested in working together? I'd love to hear about your project.
             Send me a message and let's create something amazing.
           </p>
         </div>
@@ -72,14 +65,18 @@ const Contact = () => {
               name="contact"
               method="POST"
               data-netlify="true"
+              action="/"
               onSubmit={handleSubmit}
               className="space-y-6"
             >
               <input type="hidden" name="form-name" value="contact" />
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Your Name
                   </label>
                   <div className="relative">
@@ -100,7 +97,10 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Email Address
                   </label>
                   <div className="relative">
@@ -122,7 +122,10 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Subject
                 </label>
                 <div className="relative">
@@ -143,7 +146,10 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -165,7 +171,7 @@ const Contact = () => {
                   className="w-full flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
-                    'Sending...'
+                    "Sending..."
                   ) : (
                     <>
                       Send Message
@@ -175,13 +181,13 @@ const Contact = () => {
                 </button>
               </div>
 
-              {submitStatus === 'success' && (
+              {submitStatus === "success" && (
                 <div className="text-green-600 text-center py-2">
                   Thank you! Your message has been sent successfully.
                 </div>
               )}
-              
-              {submitStatus === 'error' && (
+
+              {submitStatus === "error" && (
                 <div className="text-red-600 text-center py-2">
                   Oops! Something went wrong. Please try again later.
                 </div>
@@ -190,30 +196,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-
-      <style jsx global>{`
-        input:-webkit-autofill,
-        textarea:-webkit-autofill {
-          background-color: white !important;
-          color: black !important;
-        }
-
-        input:-webkit-autofill::first-line,
-        textarea:-webkit-autofill::first-line {
-          color: black !important;
-        }
-
-        input:-webkit-autofill::selection,
-        textarea:-webkit-autofill::selection {
-          background-color: transparent !important;
-          color: black !important;
-        }
-
-        input:-webkit-autofill {
-          -webkit-box-shadow: 0 0 0 30px white inset !important;
-          box-shadow: 0 0 0 30px white inset !important;
-        }
-      `}</style>
     </section>
   );
 };
