@@ -30,15 +30,15 @@ const Hero = () => (
   <ArrowRight className="ml-2" size={20} />
 </a>
 
-        <a
-        href="/Shariq Khan ID.pdf"
+      <a
+        href="/ShariqRasheedKhanResume.pdf"
         target="_blank"
-        download // Add this line
+        download="ShariqRasheedKhanResume.pdf"
         className="inline-flex items-center px-6 py-3 rounded-md text-indigo-600 bg-white border-2 border-indigo-600 hover:bg-indigo-50 group"
-        >
-          <span>Download Resume</span>
-          <Download className="ml-2 group-hover:translate-y-1 transition-transform" size={20} />
-        </a>
+      >
+        <span>Download Resume</span>
+        <Download className="ml-2 group-hover:translate-y-1 transition-transform" size={20} />
+      </a>
       </div>
     </div>
   </section>

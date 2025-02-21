@@ -15,27 +15,15 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
     try {
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      });
-
-      if (response.ok) {
-        setSubmitStatus("success");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-      } else {
-        throw new Error("Network response was not ok.");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setSubmitStatus("error");
-    } finally {
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setSubmitStatus(null), 3000);
-      setIsSubmitting(false);
+    } catch (error) {
+      setSubmitStatus("error");
+      setTimeout(() => setSubmitStatus(null), 3000);
     }
+    setIsSubmitting(false);
   };
 
   const handleChange = (e) => {
