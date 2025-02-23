@@ -34,7 +34,7 @@ const Footer = () => (
               <Github size={24} />
             </a>
           </div>
-          <p className="text-gray-500 text-sm">© 2024 Shariq Khan. All rights reserved.</p>
+          <p className="text-gray-500 text-sm">© 2025 Shariq Khan. All rights reserved.</p>
         </div>
       </div>
     </footer>
