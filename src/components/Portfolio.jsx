@@ -29,7 +29,7 @@ const Portfolio = () => {
                 GitHub
               </a>
               <a
-                href="https://67b8e637347a75009d1e1984--javascriptelearning.netlify.app/#home"
+                href="https://javascriptelearning.netlify.app/#home"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
@@ -71,3 +71,4 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
+//test comment
